@@ -1,0 +1,48 @@
+﻿@model AjeboCustomerPortal.Models.Order
+@using AjeboCustomerPortal.Controllers
+@{
+    ViewData["Title"] = "Receipt";
+
+    int Nights(System.DateTime s, System.DateTime e) => BookingGuard.Nights(s, e);
+}
+<h1>Receipt</h1>
+<p>Order #: <strong>@Model.Id</strong></p>
+<p>Payment Ref: <strong>@Model.PaymentRef</strong></p>
+<p>Status: <strong>@Model.Status</strong></p>
+
+<table style="width:100%;border-collapse:collapse">
+    <thead>
+        <tr>
+            <th style="text-align:left;border-bottom:1px solid #eee;padding:8px">Apartment</th>
+            <th style="text-align:left;border-bottom:1px solid #eee;padding:8px">Dates</th>
+            <th style="text-align:right;border-bottom:1px solid #eee;padding:8px">Nights</th>
+            <th style="text-align:right;border-bottom:1px solid #eee;padding:8px">Unit</th>
+            <th style="text-align:right;border-bottom:1px solid #eee;padding:8px">Qty</th>
+            <th style="text-align:right;border-bottom:1px solid #eee;padding:8px">Line total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model.Items)
+
+        {
+
+            var nights = Nights(i.StartDate, i.EndDate);
+            <tr>
+                <td style="padding:8px">@i.Apartment?.Name</td>
+                <td style="padding:8px">@i.StartDate:yyyy-MM-dd → @i.EndDate:yyyy-MM-dd</td>
+                <td style="text-align:right;padding:8px">@nights</td>
+                <td style="text-align:right;padding:8px">₦@i.UnitPrice</td>
+                <td style="text-align:right;padding:8px">@i.Quantity</td>
+                <td style="text-align:right;padding:8px">₦@(i.UnitPrice * nights * i.Quantity)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<h3>Total: ₦@Model.TotalAmount</h3>
+<p>
+  <a class="btn" asp-action="ReceiptPdf" asp-route-orderId="@Model.Id">
+    Download PDF
+  </a>
+</p>
+

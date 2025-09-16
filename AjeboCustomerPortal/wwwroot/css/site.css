@@ -1,0 +1,139 @@
+:root {
+    --gap: 16px;
+    --fg: #111;
+    --muted: #666;
+    --brand: #0f6;
+    --max: 1100px;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: system-ui,Segoe UI,Roboto,Arial;
+    color: var(--fg);
+    background: #fafafa
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+.container {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 24px var(--gap)
+}
+
+.wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 12px var(--gap)
+}
+
+.topbar {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 10
+}
+
+.logo {
+    font-weight: 700;
+    letter-spacing: .3px
+}
+
+.nav a {
+    margin-left: 14px
+}
+
+.inline {
+    display: inline
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 14px
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+    gap: var(--gap)
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column
+}
+
+    .card img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover
+    }
+
+    .card .pad {
+        padding: 12px
+    }
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px
+}
+
+.badge {
+    background: #f2f2f2;
+    color: var(--muted);
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 12px
+}
+
+.price {
+    font-weight: 700
+}
+
+.footer {
+    border-top: 1px solid #eee;
+    background: #fff
+}
+
+.form {
+    display: grid;
+    gap: 10px;
+    max-width: 460px
+}
+
+input[type="date"], input[type="text"], input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%
+}
+
+button, .btn {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer
+}
+
+    .btn.primary {
+        border-color: var(--brand)
+    }

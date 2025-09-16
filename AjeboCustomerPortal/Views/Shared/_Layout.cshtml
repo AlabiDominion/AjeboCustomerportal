@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions
+@{
+    // Build a *relative* returnUrl and avoid Identity pages (Login/Register) as targets
+    var path = Context.Request.Path;
+    var query = Context.Request.QueryString;
+    var isIdentityAccount = path.StartsWithSegments("/Identity/Account");
+    var returnUrl = isIdentityAccount ? Url.Content("~/") : (path + query).ToString();
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AjeboCustomerPortal</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
+</head>
+<body>
+    <header class="topbar">
+        <div class="wrap">
+            <a class="logo" asp-controller="Home" asp-action="Index">Ajebo</a>
+            <nav class="nav">
+                <a href="http://merchants.shifts.com.ng" target="_blank" rel="noopener">List your property</a>
+
+                @if (User.Identity?.IsAuthenticated ?? false)
+                {
+                    <a asp-controller="Cart" asp-action="Index">Cart</a>
+                    <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="inline">
+                        <button type="submit" class="btn-link">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl">Login</a>
+                    <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@returnUrl">Register</a>
+                }
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="wrap">
+            <p>&copy; @DateTime.UtcNow.Year Ajebo — All rights reserved.</p>
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

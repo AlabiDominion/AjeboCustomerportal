@@ -1,0 +1,50 @@
+﻿@model AjeboCustomerPortal.Models.Cart
+@using AjeboCustomerPortal.Controllers
+@{
+    ViewData["Title"] = "Your cart";
+
+    int Nights(System.DateTime s, System.DateTime e) => BookingGuard.Nights(s, e);
+
+    decimal LineTotal(AjeboCustomerPortal.Models.CartItem i) => i.Apartment.Price * Nights(i.StartDate, i.EndDate) * i.Quantity;
+
+    decimal Total = Model?.Items?.Sum(LineTotal) ?? 0m;
+}
+<h1>Your cart</h1>
+@if (Model == null || !Model.Items.Any())
+
+{
+    <p>Your cart is empty.</p>
+}
+
+else
+
+{
+    <div class="grid">
+        @foreach (var i in Model.Items)
+
+        {
+            <div class="card">
+                <img src="~/images/@(i.Apartment.ImageName ?? "placeholder.jpg")" alt="@i.Apartment.Name" />
+                <div class="pad">
+                    <h3>@i.Apartment.Name</h3>
+                    <div class="badge">@i.StartDate:yyyy-MM-dd → @i.EndDate:yyyy-MM-dd (@Nights(i.StartDate, i.EndDate) night(s))</div>
+                    <div class="row">
+                        <span>Qty: @i.Quantity</span>
+                        <strong>₦@LineTotal(i)</strong>
+                    </div>
+                    <form asp-action="RemoveItem" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@i.Id" />
+                        <button class="btn">Remove</button>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+    <hr />
+    <div class="row">
+        <h3>Total</h3>
+        <h3>₦@Total</h3>
+    </div>
+    <a class="btn primary" asp-action="Checkout">Proceed to checkout</a>
+}

@@ -1,0 +1,17 @@
+﻿@model AjeboCustomerPortal.Models.Order
+@{
+    ViewData["Title"] = "Pay";
+}
+<h1>Payment</h1>
+<p>Reference: <strong>@Model.PaymentRef</strong></p>
+<p>Total Amount: <strong>₦@Model.TotalAmount</strong></p>
+
+<!--
+  Integrate your payment gateway here (Paystack/Flutterwave):
+  - Render their inline script/button
+  - Pass amount (kobo), email, reference, callback URL
+-->
+
+<p>
+    For demo, simulate success: <a class="btn primary" asp-action="Callback" asp-route-reference="@Model.PaymentRef">I have paid</a>
+</p>

@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using AjeboCustomerPortal.Models
+@inject SignInManager<UserDetailes> SignInManager
+@inject UserManager<UserDetailes> UserManager
+
+<div class="login-partial">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a asp-controller="Cart" asp-action="Index">Cart</a>
+        <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="inline">
+            <button type="submit" class="btn-link">Logout</button>
+        </form>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a asp-area="Identity" asp-page="/Account/Register">Register</a>
+    }
+</div>

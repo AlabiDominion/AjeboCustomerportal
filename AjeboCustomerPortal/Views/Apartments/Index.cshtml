@@ -1,0 +1,24 @@
+﻿@model IEnumerable<AjeboCustomerPortal.Models.Apartment>
+@{
+    ViewData["Title"] = "Browse apartments";
+}
+<h1>Explore apartments</h1>
+<section class="grid">
+    @foreach (var a in Model)
+    {
+        <article class="card">
+            <img src="~/images/@(a.ImageName ?? "placeholder.jpg")" alt="@a.Name" />
+            <div class="pad">
+                <div class="row">
+                    <h3>@a.Name</h3>
+                    <span class="badge">@a.City</span>
+                </div>
+                <div class="price">₦@a.Price</div>
+                <div class="row">
+                    <small>@a.AverageRating.ToString("0.0") ★ (@a.RatingsCount)</small>
+                    <a class="btn" asp-action="Detailes" asp-route-id="@a.Id">View</a>
+                </div>
+            </div>
+        </article>
+    }
+</section>
