@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AjeboCustomerPortal.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace AjeboCustomerPortal.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly ApplicationDbContext _db;
+    public HomeController(ApplicationDbContext db) => _db = db;
+
+    public async Task<IActionResult> Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        var apartments = await _db.Apartments
+                                  .OrderByDescending(a => a.Id)
+                                  .ToListAsync();
+        return View(apartments);
     }
 }

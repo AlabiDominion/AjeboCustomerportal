@@ -1,27 +1,80 @@
 ﻿@model AjeboCustomerPortal.Models.Apartment
-@using Microsoft.AspNetCore.Http.Extensions
+
 @{
     ViewData["Title"] = Model.Name;
 
-    var returnUrl = Context.Request.GetDisplayUrl();
+
+
+    // Use a RELATIVE returnUrl so Identity treats it as local
+
+    var returnUrl = Context.Request.Path + Context.Request.QueryString;
+
+
+
+    // Build main image URL: if ImageName exists, use external base; else local placeholder
+
+    var imgSrc = string.IsNullOrWhiteSpace(Model.ImageName)
+
+        ? Url.Content("~/images/placeholder.jpg")
+
+        : $"https://merchants.shifts.com.ng/SharedImages/apartments/{Model.ImageName}";
+
+
+
+    // Helper to build support image URLs
+
+    string Support(string file) => $"https://merchants.shifts.com.ng/SharedImages/apartments/{file}";
 }
+
 <article class="container">
     <h1>@Model.Name</h1>
-    <div class="row"><span class="badge">@Model.City</span><span>@Model.AverageRating.ToString("0.0") ★ (@Model.RatingsCount)</span></div>
-    <img src="~/images/@(Model.ImageName ?? "placeholder.jpg")" alt="@Model.Name" style="width:100%;max-width:800px;border-radius:12px;margin:12px 0" />
+
+    <div class="row" style="margin:6px 0 12px">
+        <span class="badge">@Model.City</span>
+        <span>@Model.AverageRating.ToString("0.0") ★ (@Model.RatingsCount)</span>
+    </div>
+
+    <!-- Main image with fallback -->
+    <img src="@imgSrc"
+         alt="@Model.Name"
+         style="width:100%;max-width:800px;border-radius:12px;margin:12px 0"
+         asp-append-version="true"
+         onerror="this.onerror=null;this.src='@Url.Content("~/images/placeholder.jpg")';" />
+
+    <!-- Optional support images -->
+    <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        @foreach (var s in new[] { Model.SupportImage1, Model.SupportImage2, Model.SupportImage3, Model.SupportImage4 })
+
+        {
+
+            if (!string.IsNullOrWhiteSpace(s))
+
+            {
+                <img src="@Support(s)"
+                     alt="More views of @Model.Name"
+                     style="width:140px;height:100px;object-fit:cover;border-radius:8px"
+                     onerror="this.onerror=null;this.style.display='none';" />
+            }
+
+        }
+    </div>
+
     <p>@Model.Description</p>
-    <div class="price">₦@Model.Price / night</div>
+    <div class="price">₦@Model.Price.ToString("N2") / night</div>
 
     @if (User.Identity?.IsAuthenticated ?? false)
 
     {
-        <form class="form" asp-action="AddToCart" asp-controller="Apartments" method="post">
+        <form class="form" asp-action="AddToCart" asp-controller="Apartments" method="post" style="margin-top:12px">
             @Html.AntiForgeryToken()
             <input type="hidden" name="ApartmentId" value="@Model.Id" />
-            <label>Start date</label>
-            <input type="date" name="StartDate" required />
-            <label>End date</label>
-            <input type="date" name="EndDate" required />
+
+            <label for="start">Start date</label>
+            <input id="start" type="date" name="StartDate" required />
+
+            <label for="end">End date</label>
+            <input id="end" type="date" name="EndDate" required />
+
             <button class="btn primary" type="submit">Add to cart</button>
         </form>
     }
@@ -29,6 +82,12 @@
     else
 
     {
-        <a class="btn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl">Login to add to cart</a>
+        <a class="btn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl" style="margin-top:12px">
+            Login to add to cart
+        </a>
     }
 </article>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

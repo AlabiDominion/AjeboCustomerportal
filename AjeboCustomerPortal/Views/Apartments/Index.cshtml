@@ -7,7 +7,13 @@
     @foreach (var a in Model)
     {
         <article class="card">
-            <img src="~/images/@(a.ImageName ?? "placeholder.jpg")" alt="@a.Name" />
+            @{
+                
+                var imgSrc = string.IsNullOrWhiteSpace(a.ImageName)
+                ? Url.Content("~/images/placeholder.jpg")
+                : $"https://merchants.shifts.com.ng/SharedImages/apartments/{a.ImageName}";
+            }
+            <img src="@imgSrc" alt="@a.Name" class="card-img" />
             <div class="pad">
                 <div class="row">
                     <h3>@a.Name</h3>

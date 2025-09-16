@@ -309,3 +309,4 @@ C:\Users\DOMINION\Documents\Projects\ASP.NET Project\AjeboCustomerPortal.web\Aje
 C:\Users\DOMINION\Documents\Projects\ASP.NET Project\AjeboCustomerPortal.web\AjeboCustomerPortal\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\DOMINION\Documents\Projects\ASP.NET Project\AjeboCustomerPortal.web\AjeboCustomerPortal\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\DOMINION\Documents\Projects\ASP.NET Project\AjeboCustomerPortal.web\AjeboCustomerPortal\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\DOMINION\Documents\Projects\ASP.NET Project\AjeboCustomerPortal.web\AjeboCustomerPortal\obj\Debug\net8.0\AjeboCustomerPortal.sourcelink.json
