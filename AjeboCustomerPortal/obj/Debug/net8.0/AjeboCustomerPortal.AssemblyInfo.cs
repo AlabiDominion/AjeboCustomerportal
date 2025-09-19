@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AjeboCustomerPortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5efe1f5f98782dabc4884812951303826792c14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48ca2b909aa940a921dad16563d475cd880c22c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AjeboCustomerPortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AjeboCustomerPortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

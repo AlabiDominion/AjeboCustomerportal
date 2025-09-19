@@ -255,3 +255,138 @@
         transform: translateY(0px)
     }
 }
+
+/*Login page Design */
+.LoginPageBackground{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    position: absolute;
+    top: 0px;
+    z-index: 102;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoginPageInnerBackground {
+    width: 30%;
+    height: 70%;
+    position: relative;
+    border 1px solid #142529;
+    border-radius: 10px;
+    backdrop-filter: blur(10px)
+}
+.LoginPageBackground video {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+.LoginPageInnerBackground h1{
+    text-align: center;
+    color: white;
+}
+.LoginPageInnerBackground h2 {
+    text-align: center;
+    color: white;
+}
+.LoginForm{
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    row-gap: 10px;
+}
+    .LoginForm label{
+        color: white;
+
+    }
+    .LoginForm input {
+        height: 30px;
+        border-radius: 7px;
+        border: none;
+    }
+        .LoginForm input:focus {
+            border: none;
+        }
+.LoginExtra{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 0 1rem;
+    align-items: center;
+}
+
+    .LoginExtra button {
+        background: #007bfe;
+        border: none;
+        width: 100px;
+        color: white;
+        transition: all 0.5s ease;
+        
+    }
+        .LoginExtra button:hover{
+            transform: scale(1.1)
+        }
+
+.LoginPageInnerBackground p{
+    color: white;
+    margin:10px 1rem
+}
+.LoginPageInnerBackground button {
+    margin: 1rem;
+    width: 93%;
+}
+
+
+@media (max-width:540px) {
+    .LoginPageInnerBackground {
+        width: 80%;
+        height: 80%;
+    }
+        .LoginPageInnerBackground h1 {
+            text-align: center;
+            color: white;
+            font-size: 1.7rem;
+        }
+        .LoginPageInnerBackground h2{
+            
+        }
+        .LoginPageInnerBackground button {
+            
+            width: 90%;
+        }
+
+    .forgotPasswordinner{
+        width: 60%;
+    }
+}
+
+.forgotPassword{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.forgotPasswordinner {
+    width: 25%;
+    height: 40%;
+    background-color: #007bfe;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+@media (max-width:540px) {
+
+    .forgotPasswordinner {
+        width: 60%;
+        height:60%;
+    }
+    .forgotPasswordinner p{
+        padding: 0 1rem; 
+    }
+}

@@ -1,4 +1,3 @@
-wwwroot\css\DashboardIndex.css
 wwwroot\css\loader.cs
 wwwroot\css\loader.css
 wwwroot\css\site.css
@@ -68,3 +67,5 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\Media\Apartment Video.mp4
+wwwroot\css\DashboardIndex.css
