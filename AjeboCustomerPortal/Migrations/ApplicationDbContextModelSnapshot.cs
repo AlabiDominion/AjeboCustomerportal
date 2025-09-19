@@ -271,11 +271,12 @@ namespace AjeboCustomerPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OrderId");
-
                     b.HasIndex("UserId");
 
                     b.HasIndex("ApartmentId", "CreatedAt");
+
+                    b.HasIndex("OrderId", "ApartmentId", "UserId")
+                        .IsUnique();
 
                     b.ToTable("Reviews");
                 });

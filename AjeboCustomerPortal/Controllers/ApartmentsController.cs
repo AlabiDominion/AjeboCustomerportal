@@ -1,11 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using AjeboCustomerPortal.Data;
+﻿using AjeboCustomerPortal.Data;
 using AjeboCustomerPortal.Models;
+using AjeboCustomerPortal.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using AjeboCustomerPortal.ViewModels;
 
 namespace AjeboCustomerPortal.Controllers
 {
@@ -14,24 +16,70 @@ namespace AjeboCustomerPortal.Controllers
         private readonly ApplicationDbContext _db;
         public ApartmentsController(ApplicationDbContext db) => _db = db;
 
-        // GET: /Apartments
-        public async Task<IActionResult> Index()
+
+public async Task<IActionResult> Index([FromQuery] ApartmentFilterVm f)
+    {
+        // Base query
+        var q = _db.Apartments.AsQueryable();
+
+        // Location
+        if (!string.IsNullOrWhiteSpace(f.Location))
+            q = q.Where(a => a.City == f.Location);
+
+        // Budget per night
+        if (f.MinBudget.HasValue) q = q.Where(a => a.Price >= f.MinBudget.Value);
+        if (f.MaxBudget.HasValue) q = q.Where(a => a.Price <= f.MaxBudget.Value);
+
+        // Guests (simple proxy: bedrooms >= guests)
+        if (f.Guests.HasValue && f.Guests.Value > 0)
+            q = q.Where(a => a.Bedrooms >= f.Guests.Value);
+
+        // Availability (exclude apartments with PAID overlaps in the requested range)
+        if (f.CheckIn.HasValue && f.CheckOut.HasValue && f.CheckIn < f.CheckOut)
         {
-            var apartments = await _db.Apartments
-                .OrderByDescending(a => a.Id)
-                .ToListAsync();
-            return View(apartments);
+            var start = f.CheckIn.Value.Date;
+            var end = f.CheckOut.Value.Date;
+
+            q = q.Where(a => !_db.OrderItems
+                .Include(oi => oi.Order)
+                .Any(oi => oi.ApartmentId == a.Id
+                    && oi.Order.Status == "Paid"
+                    && !(oi.EndDate <= start || oi.StartDate >= end)   // overlap
+                ));
         }
 
-        // GET: /Apartments/Details/5
-        public async Task<IActionResult> Detailes(int id)
+        // Order newest first
+        var apartments = await q.OrderByDescending(a => a.Id).ToListAsync();
+
+        // Populate distinct cities for the dropdown
+        ViewBag.Cities = await _db.Apartments
+            .Select(a => a.City)
+            .Where(c => c != null && c != "")
+            .Distinct()
+            .OrderBy(c => c)
+            .ToListAsync();
+
+        ViewBag.Filter = f;
+        return View(apartments);
+    }
+
+
+
+    public async Task<IActionResult> Detailes(int id)
         {
             var apt = await _db.Apartments
                 .Include(a => a.Reviews)
                 .FirstOrDefaultAsync(a => a.Id == id);
-            if (apt == null) return NotFound();
-            return View(apt);
+
+            if (apt == null)
+            {
+                TempData["Msg"] = "That apartment wasn’t found.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View("Detailes", apt);
         }
+
 
         // POST: /Apartments/AddToCart
         [Authorize]
@@ -54,7 +102,7 @@ namespace AjeboCustomerPortal.Controllers
                 _db.Carts.Add(cart);
             }
 
-            // merge same apartment/date range lines
+            
             var existing = cart.Items.FirstOrDefault(i =>
                 i.ApartmentId == vm.ApartmentId &&
                 i.StartDate.Date == vm.StartDate.Date &&
@@ -75,7 +123,7 @@ namespace AjeboCustomerPortal.Controllers
             }
             else
             {
-                existing.Quantity += 1; // or keep 1 for rentals
+                existing.Quantity += 1; 
             }
 
             await _db.SaveChangesAsync();

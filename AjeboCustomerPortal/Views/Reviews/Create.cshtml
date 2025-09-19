@@ -1,0 +1,29 @@
+﻿@model ReviewVm
+@{
+    ViewData["Title"] = "Write a review";
+    var apt = (AjeboCustomerPortal.Models.Apartment)ViewBag.Apartment;
+}
+<h1>Review @apt.Name</h1>
+
+<form asp-action="Create" method="post" class="form">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="ApartmentId" />
+    <input type="hidden" asp-for="OrderId" />
+
+    <label>Rating</label>
+    <select asp-for="Rating">
+        <option value="5">★★★★★ (5)</option>
+        <option value="4">★★★★☆ (4)</option>
+        <option value="3">★★★☆☆ (3)</option>
+        <option value="2">★★☆☆☆ (2)</option>
+        <option value="1">★☆☆☆☆ (1)</option>
+    </select>
+
+    <label asp-for="Title"></label>
+    <input asp-for="Title" />
+
+    <label asp-for="Body"></label>
+    <textarea asp-for="Body" rows="5"></textarea>
+
+    <button class="btn primary" type="submit">Submit review</button>
+</form>

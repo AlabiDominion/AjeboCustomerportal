@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http.Extensions
 @{
-    // Build a *relative* returnUrl and avoid Identity pages (Login/Register) as targets
+    
     var path = Context.Request.Path;
     var query = Context.Request.QueryString;
     var isIdentityAccount = path.StartsWithSegments("/Identity/Account");
@@ -16,41 +16,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AjeboCustomerPortal</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    
+    <link href="~/css/loader.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/DashboardIndex.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body>
-    <header class="topbar">
-        <div class="wrap">
-            <a class="logo" asp-controller="Home" asp-action="Index">Ajebo</a>
-            <nav class="nav">
-                <a href="http://merchants.shifts.com.ng" target="_blank" rel="noopener">List your property</a>
+    
+  
+   
+    
+        <header class="topbar">
+            <div class="wrap">
+                <a class="logo" asp-controller="Apartments" asp-action="Index">
+                    <img src="~/images/ajebo-logo.png" alt="Logo" />
+                </a>
+                <nav class="nav">
+                    <a href="http://merchants.shifts.com.ng" target="_blank" rel="noopener">List your property</a>
 
-                @if (User.Identity?.IsAuthenticated ?? false)
-                {
-                    <a asp-controller="Cart" asp-action="Index">Cart</a>
-                    <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="inline">
-                        <button type="submit" class="btn-link">Logout</button>
-                    </form>
-                }
-                else
-                {
-                    <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl">Login</a>
-                    <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@returnUrl">Register</a>
-                }
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                    <a asp-controller="Cart" asp-action="Index"><img style="width:20px;" src="~/images/cart.png" alt="cart" /></a>
+                    <a asp-controller="Orders" asp-action="My"> <img style="width:20px;" src="~/images/Book.png" alt="Alternate Text" /></a>
+                        <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="inline">
+                            <button type="submit" class="btn-link">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl">Login</a>
+                        <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@returnUrl">Register</a>
+                    }
 
-            </nav>
+                </nav>
+                <div class="Hamburger">
+                    <div id ="HamburgerFirst">
+                        <img src="~/images/hamburger.png" alt="" />
+                    </div>
+
+
+                <div id="HamburgerSecond" class="DisplayHamburger">
+                        <img src="~/images/hamburgerRun.png" alt="" />
+                    </div>
+                    
+               
+                </div>
+            </div>
+        </header>
+    <div id="topbarDropPanel" class="topbarDropPanel">
+            <a href="http://merchants.shifts.com.ng" target="_blank" rel="noopener">List your property ⏩</a>
+            @if (User.Identity?.IsAuthenticated ?? false)
+            {
+            <a asp-controller="Cart" asp-action="Index"><img style="width:20px;" src="~/images/cart.png" alt="cart" /> Cart</a>
+            <a asp-controller="Orders" asp-action="My">My Orders</a>
+                <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="inline">
+                <button type="submit" style="font-size: 1.3rem; background-color: #007bff; color: white;">Logout</button>
+                </form>
+            }
+            else
+            {
+                <a asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl">Login</a>
+                <a asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@returnUrl">Register</a>
+            }
         </div>
-    </header>
 
-    <main class="container">
-        @RenderBody()
-    </main>
+        <main class="container">
+            @RenderBody()
+        </main>
 
-    <footer class="footer">
-        <div class="wrap">
-            <p>&copy; @DateTime.UtcNow.Year Ajebo — All rights reserved.</p>
-        </div>
-    </footer>
+        <footer class="footer">
+            <div class="wrap">
+                <p>&copy; @DateTime.UtcNow.Year Ajebo — All rights reserved.</p>
+            </div>
+        </footer>
+    
+    
+
+    
+    <script src="~/js/site.js"></script>
+    
+
+        <script>
+            
+            window.initMap = function () {
+              
+              if (typeof window.pageInitMap === "function") {
+                window.pageInitMap();
+              }
+            };
+        </script>
+
+        <!-- Load Google Maps once; DO NOT duplicate on pages -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCexED0Mr_rM9Wd2j3j7SA-B8usXJAehJc&callback=initMap" async defer></script>
 
     @RenderSection("Scripts", required: false)
 </body>

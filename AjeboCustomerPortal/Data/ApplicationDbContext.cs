@@ -60,6 +60,10 @@ namespace AjeboCustomerPortal.Data
                 .WithMany()
                 .HasForeignKey(o => o.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
+            
+            b.Entity<Review>()
+              .HasIndex(r => new { r.OrderId, r.ApartmentId, r.UserId })
+              .IsUnique();
 
             // Cart → User (explicit nav)
             b.Entity<Cart>()

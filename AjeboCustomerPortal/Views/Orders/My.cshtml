@@ -1,0 +1,77 @@
+﻿@model IEnumerable<AjeboCustomerPortal.Models.Order>
+@using System
+@{
+    ViewData["Title"] = "My Orders";
+    var reviewed = (IEnumerable<dynamic>)(ViewBag.ReviewedPairs ?? Array.Empty<object>());
+    bool AlreadyReviewed(int orderId, int apartmentId)
+        => reviewed.Any(x => x.OrderId == orderId && x.ApartmentId == apartmentId);
+    bool CanReview(AjeboCustomerPortal.Models.Order o, AjeboCustomerPortal.Models.OrderItem i)
+        => o.Status == "Paid" && i.EndDate <= DateTime.UtcNow.Date && !AlreadyReviewed(o.Id, i.ApartmentId);
+}
+
+<h1>My Orders</h1>
+
+@if (!Model.Any())
+{
+    <p>You have no orders yet.</p>
+}
+else
+{
+    @foreach (var o in Model)
+    {
+        <section class="card" style="margin-bottom:16px;padding:12px">
+            <div class="row">
+                <strong>Order #@o.Id</strong>
+                <span>Status: @o.Status</span>
+                <span>@o.CreatedAt:yyyy-MM-dd</span>
+                <a class="btn" asp-action="Receipt" asp-route-orderId="@o.Id">View Receipt</a>
+            </div>
+            <table style="width:100%;border-collapse:collapse;margin-top:8px">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;border-bottom:1px solid #eee;padding:6px">Apartment</th>
+                        <th style="text-align:left;border-bottom:1px solid #eee;padding:6px">Dates</th>
+                        <th style="text-align:right;border-bottom:1px solid #eee;padding:6px">Qty</th>
+                        <th style="text-align:right;border-bottom:1px solid #eee;padding:6px">Unit</th>
+                        <th style="text-align:right;border-bottom:1px solid #eee;padding:6px">Subtotal</th>
+                        <th style="text-align:right;border-bottom:1px solid #eee;padding:6px">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var i in o.Items)
+                    {
+                        var nights = (i.EndDate.Date - i.StartDate.Date).Days;
+                        <tr>
+                            <td style="padding:6px">
+                                <a asp-controller="Apartments" asp-action="Detailes" asp-route-id="@i.ApartmentId">
+                                    @i.Apartment?.Name
+                                </a>
+                            </td>
+                            <td style="padding:6px">@i.StartDate:yyyy-MM-dd → @i.EndDate:yyyy-MM-dd (@nights night(s))</td>
+                            <td style="text-align:right;padding:6px">@i.Quantity</td>
+                            <td style="text-align:right;padding:6px">₦@i.UnitPrice.ToString("N2")</td>
+                            <td style="text-align:right;padding:6px">₦@(i.UnitPrice* nights * i.Quantity).ToString("N2")</td>
+                            <td style="text-align:right;padding:6px">
+                                @if (CanReview(o, i))
+                                {
+                                    <a class="btn"
+                                       asp-controller="Reviews" asp-action="Create"
+                                       asp-route-apartmentId="@i.ApartmentId" asp-route-orderId="@o.Id">
+                                        Write review
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="badge">Review @((AlreadyReviewed(o.Id, i.ApartmentId)) ? "submitted" : "unavailable")</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row" style="justify-content:flex-end;margin-top:8px">
+                <strong>Total: ₦@o.TotalAmount.ToString("N2")</strong>
+            </div>
+        </section>
+    }
+}

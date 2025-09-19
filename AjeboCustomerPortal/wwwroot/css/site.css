@@ -23,21 +23,27 @@ a {
 }
 
 .container {
-    max-width: var(--max);
+    width: 100%;
     margin: 0 auto;
-    padding: 24px var(--gap)
+    
 }
 
 .wrap {
-    max-width: var(--max);
+    width: 90%;
     margin: 0 auto;
-    padding: 12px var(--gap)
+    padding: 12px var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content:space-between
+}
+.wrap img{
+    width: 100px
 }
 
 .topbar {
     position: sticky;
     top: 0;
-    background: #fff;
+    background: #f8f9fa;
     border-bottom: 1px solid #eee;
     z-index: 10
 }
@@ -47,13 +53,62 @@ a {
     letter-spacing: .3px
 }
 
-.nav a {
-    margin-left: 14px
+
+.nav{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    column-gap: 15px;
+    
+    }
+
+.Hamburger {
+    display: none;
+    transition: all 1.5s ease;
+    animation: slide-in-from-left 0.5s 5s ease in;
+}
+.Hamburger img{
+    width: 30px;
+    transition: all 0.5s ease;
 }
 
+
+@media (max-width:540px) {
+    .nav{
+        display: none;
+    }
+    .Hamburger {
+        display: block;
+        
+    }
+    .DisplayHamburger{
+        display: none;
+    }
+
+}
+@keyframes slide-in-from-left{
+    0%{
+        opacity:0;
+        transform: translateX(20px)
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px)
+    }
+}
 .inline {
     display: inline
 }
+.stars {
+    color: gold;
+    letter-spacing: 1px;
+    margin-right: 6px;
+}
+
+.rating small {
+    color: #666;
+}
+
 
 .btn-link {
     background: none;
@@ -66,8 +121,10 @@ a {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
-    gap: var(--gap)
+    grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+    gap: 2rem;
+    width: 86%;
+    margin: 0 auto;
 }
 
 .card {
@@ -76,7 +133,7 @@ a {
     border-radius: 12px;
     overflow: hidden;
     display: flex;
-    flex-direction: column
+    flex-direction: column; 
 }
 
     .card img {
@@ -88,6 +145,9 @@ a {
     .card .pad {
         padding: 12px
     }
+.pad {
+    border-bottom: 1px solid #eeeeee;
+}
 
 .row {
     display: flex;
@@ -105,7 +165,9 @@ a {
 }
 
 .price {
-    font-weight: 700
+    font-weight: 700;
+    color: #007bff;
+    padding: 10px;
 }
 
 .footer {
@@ -131,7 +193,15 @@ button, .btn {
     border: 1px solid #ddd;
     border-radius: 8px;
     background: #fff;
-    cursor: pointer
+    cursor: pointer;
+    
+}
+.btn {
+    width: 90%;
+    margin: 1rem auto;
+    border: 1px solid #007bff;
+    color: #007bff;
+    text-align: center;
 }
 
     .btn.primary {

@@ -2,29 +2,223 @@
 @{
     ViewData["Title"] = "Browse apartments";
 }
-<h1>Explore apartments</h1>
-<section class="grid">
-    @foreach (var a in Model)
+@using System.Text.Json
+
+@{
+    ViewData["Title"] = "Explore apartments";
+    // Serialize only fields we need to keep payload small
+    var mapData = Model.Select(a => new
     {
-        <article class="card">
-            @{
-                
-                var imgSrc = string.IsNullOrWhiteSpace(a.ImageName)
-                ? Url.Content("~/images/placeholder.jpg")
-                : $"https://merchants.shifts.com.ng/SharedImages/apartments/{a.ImageName}";
-            }
-            <img src="@imgSrc" alt="@a.Name" class="card-img" />
-            <div class="pad">
-                <div class="row">
-                    <h3>@a.Name</h3>
-                    <span class="badge">@a.City</span>
-                </div>
-                <div class="price">₦@a.Price</div>
-                <div class="row">
-                    <small>@a.AverageRating.ToString("0.0") ★ (@a.RatingsCount)</small>
-                    <a class="btn" asp-action="Detailes" asp-route-id="@a.Id">View</a>
-                </div>
+        id = a.Id,
+        name = a.Name,
+        city = a.City,
+        price = (double)a.Price,
+        latitude = a.Latitude.HasValue ? (double?)a.Latitude.Value : null,
+        longitude = a.Longitude.HasValue ? (double?)a.Longitude.Value : null
+    });
+    var mapJson = JsonSerializer.Serialize(mapData);
+}
+@{
+    var f = (AjeboCustomerPortal.ViewModels.ApartmentFilterVm)(ViewBag.Filter ?? new AjeboCustomerPortal.ViewModels.ApartmentFilterVm());
+    var cities = (IEnumerable<string>)(ViewBag.Cities ?? Enumerable.Empty<string>());
+}
+
+<div class="loaderContainer" id="loader">
+    <section class="loader">
+        <div>
+            <div>
+                <span class="one h6"></span>
+                <span class="two h3"></span>
             </div>
-        </article>
+        </div>
+
+        <div>
+            <div>
+                <span class="one h1"></span>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <span class="two h2"></span>
+            </div>
+        </div>
+        <div>
+            <div>
+                <span class="one h4"></span>
+            </div>
+        </div>
+    </section>
+</div>
+<div id="content" style="display: none;">
+    <div class="hero">
+        <!-- Video background -->
+        <video id="heroVideo" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" autoplay muted loop playsinline>
+            <!-- Remote video from Ajebo website for bird's-eye perspective -->
+            <source src="https://ajebo.shifts.com.ng/assets/video/video-banner-3.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+        <div class="Bannercontainer position-relative" style="z-index: 2;">
+            <h1 class="display-4 mb-4">Find Your Perfect Haven</h1>
+            <div class="search-container">
+                <form class="search-form" method="get" asp-controller="Apartments" asp-action="Index">
+                    <div class="form-group">
+                        <label for="locationSelect">Location</label>
+                        <select id="locationSelect" name="Location">
+                            <option value="">Location</option>
+                            @foreach (var c in cities)
+                            {
+                                <option value="@c" selected="@(f.Location == c ? "selected" : null)">@c</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Check-in & out</label>
+                        <div class="date-group">
+                            <input type="date" id="checkIn" name="CheckIn" value="@(f.CheckIn?.ToString("yyyy-MM-dd"))" />
+                            <input type="date" id="checkOut" name="CheckOut" value="@(f.CheckOut?.ToString("yyyy-MM-dd"))" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestsInput">Guests</label>
+                        <input id="guestsInput" type="number" name="Guests" min="1" value="@(f.Guests?.ToString())" placeholder="Guests" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your budget per night (₦)</label>
+                        <div class="budget-group">
+                            <input id="minBudget" type="number" name="MinBudget" placeholder="20000" value="@(f.MinBudget?.ToString())" />
+                            <span>to</span>
+                            <input id="maxBudget" type="number" name="MaxBudget" placeholder="200000" value="@(f.MaxBudget?.ToString())" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn-search">Search</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <h1 style="width: 86%; margin: 2rem auto;">Recommended Properties</h1>
+    <section class="grid">
+        @foreach (var a in Model)
+        {
+            <article class="card">
+                <div class="price">₦@a.Price</div>
+                @{
+
+                    var imgSrc = string.IsNullOrWhiteSpace(a.ImageName)
+                    ? Url.Content("~/images/placeholder.jpg")
+                    : $"https://merchants.shifts.com.ng/SharedImages/apartments/{a.ImageName}";
+                }
+                <img src="@imgSrc" alt="@a.Name" class="card-img" />
+                <div class="pad">
+                    <div class="row">
+                        <h3>@a.Name</h3>
+                        <span class="badge">@a.City</span>
+                    </div>
+
+                    @{
+                        // clamp & format
+                        var avg = Math.Max(0, Math.Min(5, a.AverageRating));
+                        var full = (int)Math.Round(avg, MidpointRounding.AwayFromZero); // 0..5 stars
+                        if (full > 5) full = 5; if (full < 0) full = 0;
+
+                        string stars = new string('★', full) + new string('☆', 5 - full);
+                        string avgText = avg.ToString("0.0");
+                    }
+                    <div class="rating" title="@avgText of 5">
+                        <span class="stars">@stars</span>
+                        <small>@avgText ★ (@a.RatingsCount)</small>
+                    </div>
+
+                </div>
+                <a class="btn" asp-action="Detailes" asp-route-id="@a.Id">View details</a>
+            </article>
+        }
+    </section>
+
+    <section class="explore-map" style="margin-top:24px">
+        <h2>Explore on Map</h2>
+        <div id="exploreMap" style="width:100%; height:450px; border-radius:8px;"></div>
+    </section>
+
+
+</div>
+
+
+
+
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/680cb67329a5a6191417b3c4/1ipoqhdmp';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+<!--End of Tawk.to Script-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    // Data from server
+    const currentData = @Html.Raw(@mapJson);
+
+    function initExploreMap() {
+      const el = document.getElementById("exploreMap");
+      if (!el) return;
+
+      const map = new google.maps.Map(el, {
+        zoom: 6,
+        center: { lat: 9.0820, lng: 8.6753 } // Nigeria
+      });
+
+      (currentData || []).forEach(prop => {
+        const hasCoords = prop.latitude != null && prop.longitude != null;
+        if (!hasCoords) return;
+
+        const coords = { lat: Number(prop.latitude), lng: Number(prop.longitude) };
+        const marker = new google.maps.Marker({ position: coords, map, title: prop.name ?? "" });
+
+        const html = `
+          <div style="max-width:220px;">
+            <h4 style="margin:0;">${prop.name ?? ""}</h4>
+            <p style="margin:4px 0;">${prop.city ?? ""}</p>
+            <p style="margin:4px 0;"><strong>₦${Number(prop.price || 0).toLocaleString()}</strong></p>
+            <a href="@Url.Action("Detailes", "Apartments")/${"${prop.id}"}"
+               style="display:inline-block;margin-top:6px;padding:4px 8px;background:#007bff;color:#fff;border:none;border-radius:4px;text-decoration:none;">
+               View Details
+            </a>
+          </div>`;
+
+        const info = new google.maps.InfoWindow({ content: html });
+        marker.addListener("click", () => info.open(map, marker));
+      });
     }
-</section>
+
+    // Page-specific hook consumed by global initMap()
+    window.pageInitMap = function () {
+      if (window.google && google.maps) initExploreMap();
+    };
+</script>
+
+<script>
+    document.querySelector('.search-form').addEventListener('submit', e => {
+      const ci = document.getElementById('checkIn').value;
+      const co = document.getElementById('checkOut').value;
+      if ((ci && !co) || (!ci && co)) {
+        e.preventDefault();
+        alert('Please select both check-in and check-out.');
+      }
+    });
+</script>

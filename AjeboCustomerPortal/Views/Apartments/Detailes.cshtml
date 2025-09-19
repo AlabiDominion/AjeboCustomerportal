@@ -1,71 +1,131 @@
 ﻿@model AjeboCustomerPortal.Models.Apartment
+@using System.Text.Json
 
 @{
     ViewData["Title"] = Model.Name;
 
-
-
-    // Use a RELATIVE returnUrl so Identity treats it as local
-
+    // safe return url for login
     var returnUrl = Context.Request.Path + Context.Request.QueryString;
 
-
-
-    // Build main image URL: if ImageName exists, use external base; else local placeholder
-
+    // main image
     var imgSrc = string.IsNullOrWhiteSpace(Model.ImageName)
-
         ? Url.Content("~/images/placeholder.jpg")
-
         : $"https://merchants.shifts.com.ng/SharedImages/apartments/{Model.ImageName}";
-
-
-
-    // Helper to build support image URLs
-
     string Support(string file) => $"https://merchants.shifts.com.ng/SharedImages/apartments/{file}";
+
+    // map payload (single apt)
+    var aptData = new
+    {
+        id = Model.Id,
+        name = Model.Name,
+        city = Model.City,
+        price = (double)Model.Price,
+        latitude = Model.Latitude.HasValue ? (double?)Model.Latitude.Value : null,
+        longitude = Model.Longitude.HasValue ? (double?)Model.Longitude.Value : null
+    };
+    var aptJson = JsonSerializer.Serialize(aptData);
+
+    // rating display helpers
+    var avg = Math.Max(0, Math.Min(5, Model.AverageRating));
+    var fullStars = (int)Math.Round(avg, MidpointRounding.AwayFromZero);
+    if (fullStars < 0) fullStars = 0; if (fullStars > 5) fullStars = 5;
+    string stars = new string('★', fullStars) + new string('☆', 5 - fullStars);
 }
 
 <article class="container">
     <h1>@Model.Name</h1>
 
-    <div class="row" style="margin:6px 0 12px">
+    <div class="row" style="margin:6px 0 12px; gap:12px; align-items:center;">
         <span class="badge">@Model.City</span>
-        <span>@Model.AverageRating.ToString("0.0") ★ (@Model.RatingsCount)</span>
+        <span class="rating" title="@avg.ToString("0.0") of 5">
+            <span class="stars" style="color:gold;">@stars</span>
+            <small>@avg.ToString("0.0") ★ (@Model.RatingsCount)</small>
+        </span>
     </div>
 
-    <!-- Main image with fallback -->
     <img src="@imgSrc"
          alt="@Model.Name"
          style="width:100%;max-width:800px;border-radius:12px;margin:12px 0"
          asp-append-version="true"
          onerror="this.onerror=null;this.src='@Url.Content("~/images/placeholder.jpg")';" />
 
-    <!-- Optional support images -->
     <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:12px">
         @foreach (var s in new[] { Model.SupportImage1, Model.SupportImage2, Model.SupportImage3, Model.SupportImage4 })
-
         {
-
             if (!string.IsNullOrWhiteSpace(s))
-
             {
                 <img src="@Support(s)"
                      alt="More views of @Model.Name"
                      style="width:140px;height:100px;object-fit:cover;border-radius:8px"
                      onerror="this.onerror=null;this.style.display='none';" />
             }
-
         }
     </div>
 
     <p>@Model.Description</p>
     <div class="price">₦@Model.Price.ToString("N2") / night</div>
 
-    @if (User.Identity?.IsAuthenticated ?? false)
+    <!-- Reviews section -->
+    <section style="margin-top:18px">
+        <h2 style="margin-bottom:8px;">Guest reviews</h2>
 
+        @if ((Model.Reviews?.Any(r => r.IsApproved) ?? false))
+        {
+            <div class="stack" style="display:grid; gap:12px;">
+                @foreach (var r in Model.Reviews
+                            .Where(x => x.IsApproved)
+                            .OrderByDescending(x => x.CreatedAt)
+                            .Take(8))
+                {
+                    var rStars = new string('★', r.Rating) + new string('☆', 5 - r.Rating);
+                    <div class="card pad" style="border:1px solid #eee; border-radius:10px; padding:12px;">
+                        <div class="rating" style="margin-bottom:6px;">
+                            <span class="stars" style="color:gold;">@rStars</span>
+                            <small style="color:#666; margin-left:6px;">@r.CreatedAt:yyyy-MM-dd</small>
+                        </div>
+
+                        @if (!string.IsNullOrWhiteSpace(r.Title))
+                        {
+                            <div class="title" style="font-weight:600; margin-bottom:4px;">@r.Title</div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(r.Body))
+                        {
+                            <p class="body" style="margin:0;">@r.Body</p>
+                        }
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No reviews yet — be the first to share your experience after your stay.</p>
+        }
+
+        @* CTA: user must go to My Orders to write a review (eligibility enforced there) *@
+        @if (User.Identity?.IsAuthenticated ?? false)
+        {
+            <a class="btn" asp-controller="Orders" asp-action="My" style="margin-top:10px; display:inline-block;">
+                Write a review (from My Orders)
+            </a>
+        }
+        else
+        {
+            <a class="btn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl" style="margin-top:10px; display:inline-block;">
+                Login to review
+            </a>
+        }
+    </section>
+
+    <!-- Map -->
+    <section class="explore-map" style="margin-top:24px">
+        <h2>Explore on Map</h2>
+        <div id="exploreMap" style="width:100%; height:380px; border-radius:8px;"></div>
+    </section>
+
+    <!-- Add to cart -->
+    @if (User.Identity?.IsAuthenticated ?? false)
     {
-        <form class="form" asp-action="AddToCart" asp-controller="Apartments" method="post" style="margin-top:12px">
+        <form class="form" asp-action="AddToCart" method="post" style="margin-top:12px">
             @Html.AntiForgeryToken()
             <input type="hidden" name="ApartmentId" value="@Model.Id" />
 
@@ -78,9 +138,7 @@
             <button class="btn primary" type="submit">Add to cart</button>
         </form>
     }
-
     else
-
     {
         <a class="btn" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@returnUrl" style="margin-top:12px">
             Login to add to cart
@@ -90,4 +148,38 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        const currentApt = @Html.Raw(@aptJson);
+
+        function initExploreMap() {
+          const el = document.getElementById("exploreMap");
+          if (!el) return;
+
+          const defaultCenter = { lat: 9.0820, lng: 8.6753 }; // Nigeria
+          const hasCoords = currentApt.latitude != null && currentApt.longitude != null;
+          const center = hasCoords ? { lat: Number(currentApt.latitude), lng: Number(currentApt.longitude) } : defaultCenter;
+
+          const map = new google.maps.Map(el, {
+            zoom: hasCoords ? 13 : 6,
+            center
+          });
+
+          if (hasCoords) {
+            const marker = new google.maps.Marker({ position: center, map, title: currentApt.name ?? "" });
+            const html = `
+              <div style="max-width:220px;">
+                <h4 style="margin:0;">${currentApt.name ?? ""}</h4>
+                <p style="margin:4px 0;">${currentApt.city ?? ""}</p>
+                <p style="margin:4px 0;"><strong>₦${Number(currentApt.price || 0).toLocaleString()}</strong></p>
+              </div>`;
+            const info = new google.maps.InfoWindow({ content: html });
+            marker.addListener("click", () => info.open(map, marker));
+          }
+        }
+
+        // Page hook consumed by global initMap() from _Layout
+        window.pageInitMap = function () {
+          if (window.google && google.maps) initExploreMap();
+        };
+    </script>
 }

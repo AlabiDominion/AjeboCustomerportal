@@ -1,41 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\",
+  "WorkspaceRootPath": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\views\\apartments\\detailes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\views\\apartments\\detailes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\views\\apartments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\views\\apartments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\views\\apartments\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\controllers\\apartmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\controllers\\apartmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\controllers\\apartmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\viewmodels\\apartmentfiltervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\viewmodels\\apartmentfiltervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\views\\apartments\\detailes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\views\\apartments\\detailes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\views\\orders\\receipt.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\views\\orders\\receipt.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\wwwroot\\css\\dashboardindex.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\wwwroot\\css\\dashboardindex.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\dominion\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|c:\\users\\alabi\\documents\\projects\\asp.net project\\ajebocustomerportal.web\\ajebocustomerportal\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{56EA5596-D246-47B3-A3C5-79C724BBE09B}|AjeboCustomerPortal\\AjeboCustomerPortal.csproj|solutionrelative:ajebocustomerportal\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -46,105 +46,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "ApartmentFilterVm.cs",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\ViewModels\\ApartmentFilterVm.cs",
+              "RelativeDocumentMoniker": "AjeboCustomerPortal\\ViewModels\\ApartmentFilterVm.cs",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\ViewModels\\ApartmentFilterVm.cs",
+              "RelativeToolTip": "AjeboCustomerPortal\\ViewModels\\ApartmentFilterVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-19T16:26:18.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "AjeboCustomerPortal\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "AjeboCustomerPortal\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAUwG4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-15T23:01:15.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DashboardIndex.css",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\css\\DashboardIndex.css",
+              "RelativeDocumentMoniker": "AjeboCustomerPortal\\wwwroot\\css\\DashboardIndex.css",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\css\\DashboardIndex.css",
+              "RelativeToolTip": "AjeboCustomerPortal\\wwwroot\\css\\DashboardIndex.css",
+              "ViewState": "AgIAANIAAAAAAAAAAAAAAO8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-18T12:44:26.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "AjeboCustomerPortal\\wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "AjeboCustomerPortal\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-17T22:59:09.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Detailes.cshtml",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Detailes.cshtml",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Detailes.cshtml",
               "RelativeDocumentMoniker": "AjeboCustomerPortal\\Views\\Apartments\\Detailes.cshtml",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Detailes.cshtml",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Detailes.cshtml",
               "RelativeToolTip": "AjeboCustomerPortal\\Views\\Apartments\\Detailes.cshtml",
-              "ViewState": "AgIAACwAAAAAAAAAAAAswF0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAAAIQAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-16T01:06:42.066Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "AjeboCustomerPortal\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "AjeboCustomerPortal\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-16T00:51:14.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Receipt.cshtml",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Orders\\Receipt.cshtml",
-              "RelativeDocumentMoniker": "AjeboCustomerPortal\\Views\\Orders\\Receipt.cshtml",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Orders\\Receipt.cshtml",
-              "RelativeToolTip": "AjeboCustomerPortal\\Views\\Orders\\Receipt.cshtml",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-15T23:52:42.14Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrdersController.cs",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\OrdersController.cs",
-              "RelativeDocumentMoniker": "AjeboCustomerPortal\\Controllers\\OrdersController.cs",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\OrdersController.cs",
-              "RelativeToolTip": "AjeboCustomerPortal\\Controllers\\OrdersController.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAqwDcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-15T23:51:31.207Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "AjeboCustomerPortal\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "AjeboCustomerPortal\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAG4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-09-15T23:01:15.152Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Index.cshtml",
               "RelativeDocumentMoniker": "AjeboCustomerPortal\\Views\\Apartments\\Index.cshtml",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Index.cshtml",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Apartments\\Index.cshtml",
               "RelativeToolTip": "AjeboCustomerPortal\\Views\\Apartments\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAALsAAAAAAAAAAAAQwOAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-15T22:51:26.94Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ApartmentsController.cs",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\ApartmentsController.cs",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\ApartmentsController.cs",
               "RelativeDocumentMoniker": "AjeboCustomerPortal\\Controllers\\ApartmentsController.cs",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\ApartmentsController.cs",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Controllers\\ApartmentsController.cs",
               "RelativeToolTip": "AjeboCustomerPortal\\Controllers\\ApartmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAYwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-15T22:38:24.355Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "AjeboCustomerPortal\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "AjeboCustomerPortal\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABMAAAAAAAAAAAAcwBcAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACUAAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-15T21:41:41.525Z",
               "EditorCaption": ""
@@ -153,11 +156,11 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "AjeboCustomerPortal\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\DOMINION\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\alabi\\Documents\\Projects\\ASP.NET Project\\AjeboCustomerPortal.web\\AjeboCustomerPortal\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "RelativeToolTip": "AjeboCustomerPortal\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwBEAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-15T21:06:09.667Z"
             }

@@ -51,5 +51,27 @@ namespace AjeboCustomerPortal.Controllers
             var fileName = $"Ajebo_Receipt_{order.Id}.pdf";
             return File(pdfBytes, "application/pdf", fileName);
         }
+        // GET: /Orders/My
+        [Authorize]
+        public async Task<IActionResult> My()
+        {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value;
+
+            var orders = await _db.Orders
+                .Where(o => o.UserId == userId)
+                .OrderByDescending(o => o.CreatedAt)
+                .Include(o => o.Items)
+                    .ThenInclude(i => i.Apartment)
+                .ToListAsync();
+
+            // Preload existing reviews (to hide button if already reviewed)
+            var reviewed = await _db.Reviews
+                .Where(r => r.UserId == userId)
+                .Select(r => new { r.OrderId, r.ApartmentId })
+                .ToListAsync();
+
+            ViewBag.ReviewedPairs = reviewed; // quick and simple
+            return View(orders);
+        }
     }
 }
